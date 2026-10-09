@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arcwell Studio: interior design from first sketch to finished home</title>
+<meta name="description" content="Arcwell is an interior design studio: floor plans, 3D visualisation, renovation supervision and furnishing for apartments and houses. Ask for a quote online.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Cpath d='M7 26V15a5 5 0 0 1 10 0v11M15 26V12a5 5 0 0 1 10 0v14' fill='none' stroke='%23fff' stroke-width='1.8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="preload" as="image" href="img/hero-1.webp">
+<style>
+/* ---------- Colours and sizes ---------- */
+:root {
+  --ink: #222; --black: #000; --text: #111; --muted: #50595f; --soft: #f8f8f8; --line: #b5b5b5; --blue: #c9dfee;
+  --wrap: 1270px; --gut: 24px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #fff; color: var(--text); font-family: "Montserrat", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.65; }
+a { color: inherit; }
+img, svg { display: block; }
+img { max-width: 100%; height: auto; }
+.wrap { width: min(var(--wrap), 100% - 2 * var(--gut)); margin: 0 auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 60; padding: 10px 14px; color: #fff; background: #000; }
+.skip:focus { top: 12px; }
+:focus-visible { outline: 2px solid #000; outline-offset: 3px; }
+h1, h2, h3, h4 { margin: 0; color: var(--ink); font-weight: 700; letter-spacing: 1px; line-height: 1.25; }
+.upper { text-transform: uppercase; }
+
+/* ---------- Buttons ---------- */
+.btn { display: inline-block; font: 700 12px/1.2 "Montserrat", sans-serif; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background .3s, color .3s, border-color .3s; }
+.btn-ghost { padding: 12px 16px; color: #fff; background: rgba(0, 0, 0, .2); border: 2px solid #fff; }
+.btn-ghost:hover { color: #000; background: #fff; }
+.btn-black { padding: 15px 16px; color: #fff; background: #000; border: 0; }
+.btn-black:hover { background: #333; }
+.btn-line { padding: 15px 30px 13px; font-size: 13px; font-weight: 400; text-transform: none; color: rgba(0, 0, 0, .6); background: transparent; border: 2px solid rgba(0, 0, 0, .6); }
+.btn-line:hover { color: #fff; background: #000; border-color: #000; }
+
+/* ---------- Header ---------- */
+.topbar { position: fixed; inset: 0 0 auto; z-index: 41; height: 30px; border-bottom: 1px solid rgba(255, 255, 255, .25); transition: transform .4s, opacity .4s; }
+.topbar .wrap { display: flex; justify-content: flex-end; align-items: center; height: 100%; font-size: 11px; font-weight: 700; color: rgba(255, 255, 255, .55); }
+.topbar a { text-decoration: none; }
+.head { position: fixed; inset: 30px 0 auto; z-index: 40; background: rgba(0, 0, 0, .2); border-bottom: 1px solid rgba(255, 255, 255, .25); transition: background .4s, inset .4s, border-color .4s; }
+.head .row { position: relative; display: flex; justify-content: center; align-items: center; height: 110px; transition: height .4s; }
+.logo { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #fff; text-decoration: none; transition: color .4s; }
+.logo svg { width: 78px; height: 78px; transition: width .4s, height .4s; }
+.logo span { font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; }
+.social { position: absolute; right: 0; display: flex; gap: 18px; }
+.social a { color: #fff; transition: color .4s, opacity .2s; }
+.social a:hover { opacity: .6; }
+.social svg { width: 16px; height: 16px; }
+.menu { display: flex; justify-content: center; gap: 26px; height: 60px; align-items: center; margin: 0; padding: 0; list-style: none; }
+.menu a { position: relative; display: block; padding: 8px 0; color: #fff; font-size: 13px; text-transform: uppercase; text-decoration: none; transition: color .4s; }
+.menu a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px; background: currentColor; transform: scaleX(0); transition: transform .3s; }
+.menu a:hover::after { transform: scaleX(1); }
+.burger { display: none; position: absolute; left: 0; width: 44px; height: 44px; padding: 0; background: none; border: 0; color: #fff; cursor: pointer; }
+.burger svg { width: 26px; height: 26px; margin: auto; }
+.scrolled .topbar { transform: translateY(-100%); opacity: 0; }
+.scrolled .head { inset: 0 0 auto; background: #fff; border-bottom-color: #e1e1e1; }
+.scrolled .head .row { height: 70px; }
+.scrolled .logo, .scrolled .social a, .scrolled .menu a, .scrolled .burger { color: #000; }
+.scrolled .logo svg { width: 40px; height: 40px; }
+.scrolled .logo span { display: none; }
+.scrolled .menu { height: 50px; }
+
+/* ---------- Hero slider ---------- */
+.hero { position: relative; height: 100vh; min-height: 620px; overflow: hidden; background: #2b2724; color: #fff; }
+.slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; }
+.slide.on { opacity: 1; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0, 0, 0, .45), rgba(0, 0, 0, .12) 55%, rgba(0, 0, 0, 0)); pointer-events: none; }
+.caption { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; padding-top: 140px; }
+.caption h2 { max-width: 620px; color: #fff; font-size: clamp(30px, 3.5vw, 50px); line-height: 1.1; letter-spacing: 0; text-transform: uppercase; }
+.caption p { max-width: 500px; margin: 18px 0 32px; font-size: 16px; line-height: 1.4; }
+.caption .btns { display: flex; flex-wrap: wrap; gap: 20px; }
+.js .caption .wrap > * { animation: caption-top .6s ease-out both; }
+.js .caption .wrap > :nth-child(2) { animation-delay: .15s; }
+.js .caption .wrap > :nth-child(3) { animation-delay: .3s; }
+@keyframes caption-top { from { opacity: 0; transform: translateY(-40px); } }
+.dots { position: absolute; z-index: 3; left: 50%; bottom: 28px; display: flex; gap: 10px; transform: translateX(-50%); }
+.dots button { width: 10px; height: 10px; padding: 0; background: rgba(255, 255, 255, .45); border: 0; border-radius: 50%; cursor: pointer; }
+.dots button[aria-current=true] { background: #fff; }
+
+/* ---------- Sections ---------- */
+.sec { padding: 80px 0; }
+.center { text-align: center; }
+.intro h1 { margin-bottom: 26px; font-size: 38px; text-transform: uppercase; }
+.intro p { margin: 0 0 16px; }
+.band { padding: 34px 0; background: #000; }
+.band h2 { color: #fff; font-size: 28px; text-align: center; }
+.cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding: 70px 0 60px; }
+.cols3 .col { display: grid; justify-items: center; align-content: start; gap: 22px; text-align: center; }
+.cols3 h2 { font-size: 28px; text-transform: uppercase; }
+.cols3 ul { margin: 0; padding: 0 0 0 18px; font-size: 14px; line-height: 1.6; text-align: left; color: #444; }
+.cols3 li { margin-bottom: 4px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding-bottom: 80px; }
+.two h3 { margin-bottom: 16px; font-size: 20px; }
+.two ul { margin: 0; padding-left: 20px; }
+.two li { margin-bottom: 6px; }
+.head2 { display: grid; gap: 4px; margin-bottom: 50px; text-align: center; }
+.head2 h2 { font-size: 38px; color: #0a0a0a; text-transform: uppercase; }
+.head2 p { margin: 0; font-size: 19px; color: #0a0a0a; }
+.ornament { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 26px auto 40px; }
+.ornament::before, .ornament::after { content: ""; width: 150px; height: 1px; background: #999; }
+.ornament svg { width: 16px; height: 16px; color: #777; }
+.perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px 40px; }
+.perk { display: grid; grid-template-columns: 36px 1fr; gap: 0 18px; }
+.perk svg { width: 36px; height: 36px; grid-row: span 2; }
+.perk h3 { margin-bottom: 8px; font-size: 20px; font-weight: 400; color: #0a0a0a; }
+.perk p { margin: 0; font-size: 15px; color: #0a0a0a; }
+.quote-head { text-align: center; }
+.quote-head h2 { font-size: 35px; }
+.quote-head p { margin: 4px 0 0; font-size: 20px; color: #000; }
+.quote { display: grid; grid-template-columns: 1.85fr 1fr; gap: 50px; align-items: start; }
+.quote h3 { margin-bottom: 14px; font-size: 18px; letter-spacing: 0; }
+.quote figure { margin: 0; }
+.blue { background: var(--blue); }
+.blue .wrap { padding: 70px 0; }
+.blue .two { padding: 0; align-items: start; }
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.gallery a { display: block; overflow: hidden; aspect-ratio: 1; background: #eee; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: filter .6s, transform .8s cubic-bezier(.2, .7, .2, 1); }
+.gallery a:hover img, .gallery a:focus-visible img { filter: grayscale(0); transform: scale(1.06); }
+.wide-btn { display: block; margin-top: 10px; padding: 22px; color: #fff; background: #000; font-size: 18px; text-align: center; text-transform: uppercase; text-decoration: none; letter-spacing: 1px; transition: background .3s; }
+.wide-btn:hover { background: #333; }
+.faq { position: relative; display: grid; gap: 34px; margin: 0; padding: 0; list-style: none; }
+.faq::before { content: ""; position: absolute; left: 24px; top: 10px; bottom: 30px; width: 1px; background: #ddd; }
+.faq li { position: relative; display: grid; grid-template-columns: 50px 1fr; gap: 0 28px; }
+.faq .ic { position: relative; z-index: 1; display: grid; place-items: center; width: 50px; height: 50px; color: #fff; background: #000; border-radius: 50%; }
+.faq .ic svg { width: 22px; height: 22px; }
+.faq h4 { margin: 4px 0 8px; font-size: 18px; letter-spacing: 0; }
+.faq p { margin: 0; font-size: 15px; color: var(--muted); }
+.where h2 { font-size: 30px; }
+.where .sub { margin: 2px 0 18px; font-size: 17px; }
+.where p { margin: 0; font-size: 15px; line-height: 1.75; }
+.cta h2 { font-size: 35px; }
+.cta .sub { margin: 4px 0 26px; font-size: 20px; color: #000; }
+.cta .note { max-width: 560px; margin: 22px auto 0; font-size: 14px; }
+
+/* ---------- Forms ---------- */
+.form { display: grid; gap: 12px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.field { position: relative; display: block; }
+.field input, .field select, .field textarea { width: 100%; height: 47px; padding: 13px; font: inherit; font-size: 16px; line-height: 1.2; color: #000; background: var(--soft); border: 1px solid var(--line); border-radius: 2px; outline: none; transition: border-color .2s, background .2s; }
+.field textarea { height: 47px; min-height: 47px; resize: vertical; }
+.field select { appearance: none; padding-right: 34px; color: #555; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 5 5 1.5 8.5 5M1.5 9 5 12.5 8.5 9' fill='none' stroke='%23777' stroke-width='1.3'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+.field :is(input, select, textarea):focus { background: #fff; border-color: #000; }
+.field ::placeholder { color: #555; opacity: 1; }
+.form .btn-black { justify-self: start; padding: 16px 30px; font-size: 14.7px; font-weight: 400; text-transform: none; border-radius: 2px; }
+.form .btn-black[disabled] { opacity: .6; cursor: progress; }
+.hp { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.status { min-height: 1.2em; margin: 0; font-size: 14px; color: #555; }
+.status.err { color: #c62828; }
+.sent { display: none; padding: 26px 24px; background: var(--soft); border-left: 3px solid #000; }
+.sent p { margin: 0; }
+.sent strong { display: block; margin-bottom: 4px; font-size: 18px; }
+.is-sent > :not(.sent) { display: none !important; }
+.is-sent > .sent { display: block; animation: rise .5s ease both; }
+.credit { margin: 4px 0 0; font-size: 12px; color: #777; }
+.credit a { color: #000; text-decoration: none; border-bottom: 1px solid currentColor; }
+.cta .form { max-width: 740px; margin: 0 auto; }
+.cta .inline { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.cta .inline .btn-black { justify-self: stretch; height: 47px; padding: 0 16px; font-weight: 600; }
+
+.foot { padding: 26px 0; }
+.foot .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 11px; color: #555; }
+.foot .social { position: static; }
+.foot .social a { color: #bbb; }
+
+/* Reveal on scroll */
+.js .rv { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .9s cubic-bezier(.2, .7, .2, 1); }
+.js .rv.in { opacity: 1; transform: none; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+
+@media (max-width: 989px) {
+  .menu { display: none; }
+  .burger { display: block; }
+  .head .row { height: 76px; }
+  .logo svg { width: 46px; height: 46px; }
+  .logo span { display: none; }
+  .social { display: none; }
+  .open .menu { position: fixed; inset: 106px 0 auto; display: grid; height: auto; gap: 0; padding: 10px 24px 24px; background: #fff; box-shadow: 0 20px 40px rgba(0, 0, 0, .15); }
+  .scrolled.open .menu { inset: 70px 0 auto; }
+  .open .menu a { padding: 12px 0; color: #000; border-bottom: 1px solid #eee; }
+  .cols3, .perks { grid-template-columns: 1fr; }
+  .two, .quote { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .sec { padding: 56px 0; }
+  .intro h1 { font-size: 26px; }
+  .head2 h2, .quote-head h2, .cta h2 { font-size: 26px; }
+  .band h2, .cols3 h2 { font-size: 22px; }
+  .caption { padding-top: 100px; }
+  .grid2, .grid3, .cta .inline { grid-template-columns: 1fr; }
+  .faq li { grid-template-columns: 40px 1fr; gap: 0 16px; }
+  .faq .ic { width: 40px; height: 40px; }
+  .faq::before { left: 19px; }
+  .foot .wrap { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .rv { opacity: 1; transform: none; transition: none; }
+  .js .caption .wrap > * { animation: none; }
+  .slide, .gallery img { transition: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Logo: two arches drawn with one line. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 80 80"><path d="M14 70V36a13 13 0 0 1 26 0v34M40 70V26a13 13 0 0 1 26 0v44" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M8 70h64" stroke="currentColor" stroke-width="2.4"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.3-5.4s-.3-.7-.3-1.6c0-1.5.9-2.6 2-2.6.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 1.9 0 3.4-2 3.4-5 0-2.6-1.9-4.4-4.5-4.4-3.1 0-4.9 2.3-4.9 4.7 0 .9.4 1.9.8 2.5l.1.4-.3 1.2c0 .2-.2.3-.4.2-1.3-.6-2.1-2.5-2.1-4.1 0-3.4 2.4-6.5 7.1-6.5 3.7 0 6.6 2.7 6.6 6.2 0 3.7-2.3 6.7-5.6 6.7-1.1 0-2.1-.6-2.5-1.2l-.7 2.6c-.2.9-.9 2.1-1.4 2.8A10 10 0 1 0 12 2z"/></symbol>
+  <symbol id="i-be" viewBox="0 0 24 24"><path fill="currentColor" d="M8.4 11.4c.9-.4 1.4-1.1 1.4-2.1C9.8 7.2 8.3 6.5 6.3 6.5H1v11h5.5c2.1 0 4-.9 4-3.2 0-1.4-.7-2.5-2.1-2.9zM3.4 8.4h2.4c.9 0 1.6.2 1.6 1.2 0 .9-.6 1.2-1.5 1.2H3.4zm2.6 7.2H3.4v-3h2.7c1.1 0 1.8.5 1.8 1.6 0 1.1-.8 1.4-1.9 1.4zM15 7.3h5.4v1.3H15zm2.8 2.4c-2.6 0-4.3 1.9-4.3 4.3 0 2.6 1.6 4.3 4.3 4.3 2 0 3.3-.9 4-2.8h-2c-.2.7-1.1 1-1.9 1-1.3 0-2-.7-2-2.1h6c.2-2.6-1.3-4.7-4.1-4.7zm-1.9 3.4c.1-1.1.8-1.8 1.9-1.8s1.7.7 1.8 1.8z"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M22.5 7.2a2.8 2.8 0 0 0-2-2c-1.7-.5-8.5-.5-8.5-.5s-6.8 0-8.5.5a2.8 2.8 0 0 0-2 2C1 8.9 1 12 1 12s0 3.1.5 4.8a2.8 2.8 0 0 0 2 2c1.7.5 8.5.5 8.5.5s6.8 0 8.5-.5a2.8 2.8 0 0 0 2-2c.5-1.7.5-4.8.5-4.8s0-3.1-.5-4.8zM9.8 15.1V8.9l5.7 3.1z"/></symbol>
+</svg>
+
+<div class="topbar"><div class="wrap"><a href="tel:+15550142290">+1 (555) 014 2290</a></div></div>
+<header class="head">
+  <div class="wrap row">
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu" data-burger><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+    <a class="logo" href="#top" aria-label="Arcwell Studio, home"><svg aria-hidden="true"><use href="#mark"/></svg><span>Arcwell</span></a>
+    <nav class="social" aria-label="Social">
+      <a href="#" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-insta"/></svg></a>
+      <a href="#" aria-label="Pinterest"><svg aria-hidden="true"><use href="#i-pin"/></svg></a>
+      <a href="#" aria-label="Behance"><svg aria-hidden="true"><use href="#i-be"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg aria-hidden="true"><use href="#i-yt"/></svg></a>
+    </nav>
+  </div>
+  <nav aria-label="Main"><ul class="menu" id="menu">
+    <li><a href="#about">About</a></li><li><a href="#services">Services &amp; prices</a></li><li><a href="#quote">Get a quote</a></li>
+    <li><a href="#projects">Projects</a></li><li><a href="#faq">Questions</a></li><li><a href="#contact">Contact</a></li>
+  </ul></nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-label="Featured interiors">
+    <div class="slide on"><img src="img/hero-1.webp" width="1536" height="1024" alt="A light living room with a long boucle sofa, a terracotta throw and warm wall lighting"></div>
+    <div class="slide"><img src="img/hero-2.webp" width="1536" height="1024" alt="A kitchen and dining area with grey-green cabinets, oak shelves and a round black table" loading="lazy"></div>
+    <div class="slide"><img src="img/hero-3.webp" width="1536" height="1024" alt="A calm bedroom with a beige linen bed and a rust bedspread" loading="lazy"></div>
+    <div class="caption"><div class="wrap">
+      <h2>We design and build interiors that feel like yours</h2>
+      <p>Interior design from the first floor plan to the last cushion, for apartments, houses and small offices.</p>
+      <div class="btns"><a class="btn btn-ghost" href="#projects">Our portfolio</a><a class="btn btn-black" href="#contact">Write to us</a></div>
+    </div></div>
+    <div class="dots" role="group" aria-label="Choose a photo"><button type="button" aria-label="Photo 1" aria-current="true"></button><button type="button" aria-label="Photo 2"></button><button type="button" aria-label="Photo 3"></button></div>
+  </section>
+
+  <section class="sec intro" id="about">
+    <div class="wrap">
+      <h1 class="center">Modern interior design</h1>
+      <p><em>From sketch to finished room</em>: Arcwell is an interior design studio for apartments, houses, offices and small public spaces. Every project starts with how you live and work, and ends with a home that fits it, not a showroom.</p>
+      <p>We believe a good interior is not a luxury but the way a modern home works: the right amount of storage, light where you need it, and materials that age well. Our style is calm and minimal, and we happily mix in pieces you already love. We work in the city and travel for the right project.</p>
+    </div>
+  </section>
+
+  <div class="band"><div class="wrap"><h2>Working with us, you get:</h2></div></div>
+
+  <section class="wrap cols3" id="services" aria-label="Services">
+    <div class="col">
+      <h2>Design project</h2>
+      <ul><li>A clear contract and a fixed price per square metre</li><li>Measurements and several floor plan options</li><li>Working drawings: walls, ceilings, floors, plumbing, electrics</li><li>Photorealistic 3D visualisation of every room</li><li>One designer from first call to last drawing</li></ul>
+      <a class="btn btn-line" href="#quote">Prices</a>
+    </div>
+    <div class="col">
+      <h2>Renovation &amp; supervision</h2>
+      <ul><li>Introductions to builders we have worked with for years</li><li>Regular designer visits to site</li><li>A supervision log you can read at any time</li><li>Checks that the work matches the drawings</li><li>Answers for the builders when questions come up</li></ul>
+      <a class="btn btn-line" href="#estimate">Sample estimate</a>
+    </div>
+    <div class="col">
+      <h2>Furnishing</h2>
+      <ul><li>A list of every finish: tiles, paint, flooring, with codes</li><li>Lighting and furniture chosen with real suppliers</li><li>Textiles and decor that finish each room</li><li>Trade discounts from our partners</li><li>Delivery and placement checked by us</li></ul>
+      <a class="btn btn-line" href="#projects">Portfolio</a>
+    </div>
+  </section>
+
+  <section class="wrap two" aria-label="Order a design">
+    <div>
+      <h3>A plan where every square metre works</h3>
+      <ul><li>Over 300 floor plans drawn: we suggest only layouts that make sense for daily life.</li><li>Visualisations that turn into real rooms. We do not just draw, we design to build.</li><li>We work with builders we know and trust.</li></ul>
+    </div>
+    <div>
+      <h3>Order an apartment design</h3>
+      <!-- Formgong form. Replace fk_your_access_key with the access key from your Formgong dashboard (four forms on this page). -->
+      <form class="form" id="f-order" action="https://formgong.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="fk_your_access_key">
+        <input type="hidden" name="request" value="Design order">
+        <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+        <div class="grid3">
+          <label class="field"><span class="sr">Name</span><input name="name" autocomplete="name" placeholder="Name*" required></label>
+          <label class="field"><span class="sr">Phone</span><input type="tel" name="phone" autocomplete="tel" placeholder="Phone*" required></label>
+          <label class="field"><span class="sr">Email</span><input type="email" name="email" autocomplete="email" placeholder="Email"></label>
+        </div>
+        <button class="btn btn-black" type="submit">Order</button>
+        <p class="status" data-status role="status" aria-live="polite"></p>
+        <div class="sent" tabindex="-1"><p><strong>Thank you, <span data-name>there</span>.</strong>We will call you within one working day.</p></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:20px" aria-labelledby="perks-title">
+    <div class="wrap">
+      <div class="head2"><h2 id="perks-title">Why choose us?</h2><p>From concept to completion</p></div>
+      <div class="perks">
+        <div class="perk"><svg viewBox="0 0 36 36" fill="currentColor" aria-hidden="true"><circle cx="13" cy="10" r="6"/><path d="M2 30c0-6.6 5-11 11-11s11 4.4 11 11z"/><path d="M22 14h12v10h-4l-3 3v-3h-5z"/></svg><h3>A personal approach</h3><p>We design for you and your habits, within your budget and your timeline.</p></div>
+        <div class="perk"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 5h30v26H3z"/><path d="M15 5v12M15 23v8M15 17h-12M22 17h11M22 17v-4"/></svg><h3>Smart planning</h3><p>Zoning that gets the most out of the space you have. We draw original layout options for your needs.</p></div>
+        <div class="perk"><svg viewBox="0 0 36 36" fill="currentColor" aria-hidden="true"><rect x="4" y="3" width="24" height="10" rx="2"/><path d="M28 8h4v9H17v4h-2v-6h15V10h-2z"/><rect x="13" y="21" width="6" height="12" rx="1.5"/></svg><h3>Trusted builders</h3><p>We work with crews whose work we have checked on our own projects, so the result matches the design.</p></div>
+        <div class="perk"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 33V15L18 4l14 11v18z"/><path d="M13 33V22h10v11"/></svg><h3>Years of experience</h3><p>More than ten years in architecture and interior design. We do not only design, we see it built.</p></div>
+        <div class="perk"><svg viewBox="0 0 36 36" fill="currentColor" aria-hidden="true"><path d="M18 2a10 10 0 0 0-10 10c0 7.5 10 20 10 20s10-12.5 10-20A10 10 0 0 0 18 2zm0 14a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/><path d="M4 30h8v2H4zM24 30h8v2h-8z"/></svg><h3>Local makers</h3><p>We like working with local furniture makers and workshops: well made, fairly priced and easy to service.</p></div>
+        <div class="perk"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="18" cy="18" r="15"/><path d="M3 18h30M18 3c-4.5 4-6 9-6 15s1.5 11 6 15c4.5-4 6-9 6-15s-1.5-11-6-15z"/></svg><h3>Remote projects</h3><p>We design for clients in other cities and abroad, with video calls and a shared project folder.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="quote" aria-labelledby="quote-title">
+    <div class="wrap">
+      <div class="quote-head"><h2 id="quote-title">Want an exact price for your interior?</h2><p>Fill in the form and we will send you a personal estimate.</p></div>
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#mark"/></svg></div>
+      <div class="quote">
+        <div>
+          <h3>Design project questionnaire</h3>
+          <form class="form" id="f-quote" action="https://formgong.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="fk_your_access_key">
+            <input type="hidden" name="request" value="Quote">
+            <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+            <div class="grid2">
+              <label class="field"><span class="sr">Name</span><input name="name" autocomplete="name" placeholder="Name*" required></label>
+              <label class="field"><span class="sr">Email</span><input type="email" name="email" autocomplete="email" placeholder="Email"></label>
+            </div>
+            <div class="grid2" style="grid-template-columns:1fr 1.6fr">
+              <label class="field"><span class="sr">Phone</span><input type="tel" name="phone" autocomplete="tel" placeholder="Phone*" required></label>
+              <label class="field"><span class="sr">City</span><input name="city" autocomplete="address-level2" placeholder="City"></label>
+            </div>
+            <div class="grid3">
+              <label class="field"><span class="sr">Type of space</span><select name="type" required><option value="" disabled selected>Type*</option><option>Apartment</option><option>House</option><option>Office</option><option>Café or shop</option></select></label>
+              <label class="field"><span class="sr">Area</span><select name="area"><option value="" disabled selected>Area</option><option>Up to 50 m²</option><option>50–100 m²</option><option>100–200 m²</option><option>Over 200 m²</option></select></label>
+              <label class="field"><span class="sr">Renovation needed?</span><select name="renovation"><option value="" disabled selected>Renovation needed?</option><option>Yes, full renovation</option><option>Cosmetic only</option><option>No</option><option>Not sure yet</option></select></label>
+            </div>
+            <label class="field"><span class="sr">Anything else</span><textarea name="message" placeholder="Anything else"></textarea></label>
+            <button class="btn btn-black" type="submit">Send</button>
+            <p class="status" data-status role="status" aria-live="polite"></p>
+            <p class="credit">Powered by <a href="https://formgong.com" rel="noopener">Formgong</a></p>
+            <div class="sent" tabindex="-1"><p><strong>Thank you, <span data-name>there</span>.</strong>Your personal estimate will reach you within two working days.</p></div>
+          </form>
+        </div>
+        <figure><img src="img/quote.webp" width="800" height="800" alt="A bright reading corner with a white step stool, pink cushions and framed prints" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="blue" id="estimate" aria-labelledby="estimate-title">
+    <div class="wrap">
+      <div class="quote-head" style="margin-bottom:46px"><h2 id="estimate-title" style="font-size:30px">What does a renovation estimate look like?</h2><p style="font-size:18px">A sample estimate from one of our builders</p></div>
+      <div class="two">
+        <div>
+          <h3>We price the renovation from the design</h3>
+          <ul><li>Our builders' labour starts at $35 per m², including rough materials and all building work.</li><li>The estimate is tied to a calendar schedule of the work.</li><li>Every payment is logged in a shared table you can check at any time.</li></ul>
+        </div>
+        <div>
+          <h3>Get a sample estimate</h3>
+          <form class="form" id="f-estimate" action="https://formgong.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="fk_your_access_key">
+            <input type="hidden" name="request" value="Sample estimate">
+            <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+            <div class="grid3">
+              <label class="field"><span class="sr">Name</span><input name="name" autocomplete="name" placeholder="Name*" required></label>
+              <label class="field"><span class="sr">Phone</span><input type="tel" name="phone" autocomplete="tel" placeholder="Phone*" required></label>
+              <label class="field"><span class="sr">Email</span><input type="email" name="email" autocomplete="email" placeholder="Email*" required></label>
+            </div>
+            <button class="btn btn-black" type="submit">Send</button>
+            <p class="status" data-status role="status" aria-live="polite"></p>
+            <div class="sent" tabindex="-1"><p><strong>On its way, <span data-name>there</span>.</strong>We will email you the sample estimate today.</p></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="projects" aria-labelledby="projects-title">
+    <div class="wrap">
+      <h2 class="center upper" id="projects-title" style="font-size:28px">Recent projects</h2>
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#mark"/></svg></div>
+      <div class="gallery">
+        <a href="img/g1.webp"><img src="img/g1.webp" width="800" height="800" alt="Bedroom with a grey upholstered bed and a built-in wardrobe" loading="lazy"></a>
+        <a href="img/g2.webp"><img src="img/g2.webp" width="800" height="800" alt="Home office with a white desk under the window" loading="lazy"></a>
+        <a href="img/g3.webp"><img src="img/g3.webp" width="800" height="800" alt="Bedroom with a round bench, a dressing table and fluted glass doors" loading="lazy"></a>
+        <a href="img/g4.webp"><img src="img/g4.webp" width="800" height="800" alt="Living room with a low modular sofa and sheer curtains" loading="lazy"></a>
+        <a href="img/g5.webp"><img src="img/g5.webp" width="800" height="800" alt="Bathroom with stone tiles and a freestanding bath under a tall window" loading="lazy"></a>
+        <a href="img/g6.webp"><img src="img/g6.webp" width="800" height="800" alt="Living room with a white media wall and a ring pendant light" loading="lazy"></a>
+        <a href="img/g7.webp"><img src="img/g7.webp" width="800" height="800" alt="Entrance hall with an oak wardrobe and an arched mirror" loading="lazy"></a>
+        <a href="img/g8.webp"><img src="img/g8.webp" width="800" height="800" alt="Vanity corner with a round lit mirror and a floating dressing table" loading="lazy"></a>
+      </div>
+      <a class="wide-btn" href="#contact">View portfolio</a>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="faq-title" style="padding-top:20px">
+    <div class="wrap">
+      <div class="head2" style="margin-bottom:40px"><h2 id="faq-title" style="font-size:30px;text-transform:none">When do you need an interior designer?</h2><p style="font-size:18px">Straight answers about design and renovation</p></div>
+      <ol class="faq">
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4zM10 4v9M10 17v3M4 13h6"/></svg></span><div><h4>You can't see how everything will fit</h4><p>We draw a detailed floor plan with every dimension and use designers' tricks to make room, such as moving a wall a few centimetres so two built-in wardrobes fit back to back.</p></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.4A4.6 4.6 0 0 0 22 9.8C22 6 17.5 3 12 3zM6.5 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg></span><div><h4>It's hard to picture the finished rooms</h4><p>The design project includes photorealistic views of every room, so you see the result before anything is built, often with ideas you would not have thought of. We can also make a 3D walk-through.</p></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.7 3.3a1 1 0 0 0-1.4 0L9 13.6l1.4 1.4L20.7 4.7a1 1 0 0 0 0-1.4zM7.5 15C5 15 4 17 4 18.5c0 1-.6 1.6-1.5 2 1 .5 2.3.5 3.5.5 2.5 0 4-1.6 4-3.5 0-1.4-1.1-2.5-2.5-2.5z"/></svg></span><div><h4>You doubt the design can actually be built</h4><p>We design with building in mind and choose materials that fit the budget. During supervision we check the details that make or break a room: joints between materials, tile grout colour, the depth of lit niches.</p></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.9 3.1-6.5 7-6.5s7 2.6 7 6.5z"/><circle cx="17" cy="9" r="2.5"/><path d="M17 13c2.8 0 5 1.9 5 5h-4.5c0-1.9-.8-3.6-2.1-4.7.5-.2 1-.3 1.6-.3z"/></svg></span><div><h4>You don't know where to find good builders</h4><p>We work with several crews we trust and help you compare their prices. Complex details need skilled hands, and we know who has them.</p></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 4h6a2 2 0 0 1 2 2v1h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3V6a2 2 0 0 1 2-2zm0 3h6V6H9z"/></svg></span><div><h4>You want to save on the fit-out</h4><p>We show where saving is safe and where it is not. Spend on what you touch every day: door handles, taps, kitchen fronts and worktops. Save on what you only look at.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec where center" aria-labelledby="where-title" style="padding-top:20px">
+    <div class="wrap">
+      <h2 id="where-title">Arcwell interior design studio</h2>
+      <p class="sub">Where to find us</p>
+      <p>Our studio is in the old town, next to the river.<br>12 Linden Row, studio 3<br><strong>Opening hours</strong><br>Monday to Friday, 10:00–19:00<br>Weekends by appointment</p>
+    </div>
+  </section>
+
+  <section class="sec cta center" id="contact" aria-labelledby="cta-title">
+    <div class="wrap">
+      <h2 id="cta-title">Shall we talk about your project?</h2>
+      <p class="sub">Leave your details and we will call you back.</p>
+      <form class="form" id="f-call" action="https://formgong.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="fk_your_access_key">
+        <input type="hidden" name="request" value="Call back">
+        <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+        <div class="inline">
+          <label class="field"><span class="sr">Name</span><input name="name" autocomplete="name" placeholder="Name*" required></label>
+          <label class="field"><span class="sr">Phone</span><input type="tel" name="phone" autocomplete="tel" placeholder="Phone*" required></label>
+          <button class="btn btn-black" type="submit">Send</button>
+        </div>
+        <p class="status" data-status role="status" aria-live="polite"></p>
+        <p class="credit">Powered by <a href="https://formgong.com" rel="noopener">Formgong</a></p>
+        <div class="sent" tabindex="-1" style="text-align:left"><p><strong>Thank you, <span data-name>there</span>.</strong>We will call you back within one working day.</p></div>
+      </form>
+      <p class="note">*We respect your privacy. We will not send you spam or share your details with anyone.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© <span data-year>2026</span> Arcwell Studio. A fictional studio: every name, address and project here is an example.</span>
+    <nav class="social" aria-label="Social">
+      <a href="#" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-insta"/></svg></a>
+      <a href="#" aria-label="Pinterest"><svg aria-hidden="true"><use href="#i-pin"/></svg></a>
+      <a href="#" aria-label="Behance"><svg aria-hidden="true"><use href="#i-be"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg aria-hidden="true"><use href="#i-yt"/></svg></a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  root.classList.add("js");
+  document.querySelectorAll("[data-year]").forEach(function (n) { n.textContent = new Date().getFullYear(); });
+
+  // Header: transparent over the photos, white and smaller once the page scrolls.
+  function onScroll() { document.body.classList.toggle("scrolled", window.scrollY > 60); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Phone menu.
+  var burger = document.querySelector("[data-burger]");
+  burger.addEventListener("click", function () {
+    var open = document.body.classList.toggle("open");
+    burger.setAttribute("aria-expanded", String(open));
+  });
+  document.querySelectorAll("#menu a").forEach(function (a) { a.addEventListener("click", function () { document.body.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); }); });
+
+  // Hero: three photos that fade every 5 seconds; the dots pick one.
+  var slides = document.querySelectorAll(".slide"), dots = document.querySelectorAll(".dots button"), at = 0, timer;
+  function show(i) {
+    at = (i + slides.length) % slides.length;
+    slides.forEach(function (s, k) { s.classList.toggle("on", k === at); });
+    dots.forEach(function (d, k) { d.setAttribute("aria-current", String(k === at)); });
+  }
+  function play() { clearInterval(timer); if (!still) timer = setInterval(function () { show(at + 1); }, 5000); }
+  dots.forEach(function (d, k) { d.addEventListener("click", function () { show(k); play(); }); });
+  play();
+
+  // Sections fade up as they scroll in.
+  if (!still && "IntersectionObserver" in window) {
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); seen.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".intro .wrap > *, .cols3 .col, .two > div, .perk, .quote > *, .gallery a, .faq li, .where .wrap, .cta .wrap > *").forEach(function (el, i) {
+      el.classList.add("rv");
+      if (el.matches(".cols3 .col, .perk, .gallery a")) el.style.transitionDelay = (i % 4) * 0.08 + "s";
+      seen.observe(el);
+    });
+  }
+
+  // Forms: send to Formgong; thank-you only when the answer is success: true.
+  document.querySelectorAll("form.form").forEach(function (form) {
+    var button = form.querySelector('button[type="submit"]'), status = form.querySelector("[data-status]"), label = button.textContent;
+    function say(text, bad) { status.textContent = text; status.classList.toggle("err", !!bad); }
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      button.disabled = true;
+      button.textContent = "Sending…";
+      say("");
+      var name = (form.elements.namedItem("name").value || "").trim().split(/\s+/)[0];
+      fetch(form.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) })
+        .then(function (res) { return res.json().catch(function () { return null; }); })
+        .then(function (result) {
+          if (result && result.success === true) {
+            form.querySelectorAll("[data-name]").forEach(function (n) { n.textContent = name || "there"; });
+            form.reset();
+            form.classList.add("is-sent");
+            form.querySelector(".sent").focus();
+          } else {
+            say((result && result.message) || "Could not send. Please try again.", true);
+          }
+        })
+        .catch(function () { say("Could not send. Check your connection and try again.", true); })
+        .then(function () { button.disabled = false; button.textContent = label; });
+    });
+  });
+})();
+</script>
+</body>
+</html>
